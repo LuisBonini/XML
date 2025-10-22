@@ -1,0 +1,13 @@
+# Ambiente virtual do Poetry
+.venv/
+
+# Cache e ficheiros compilados do Python
+__pycache__/
+*.pyc
+
+# Ficheiros de configuração do utilizador
+cnpjs_config.json
+
+# Ficheiros de configuração de editores
+.vscode/
+.idea/
