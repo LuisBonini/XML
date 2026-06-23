@@ -31,7 +31,7 @@ export default function AdminSalas() {
 
   return (
     <div>
-      <div className="mb-4 flex items-center justify-between">
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <h1 className="text-xl font-semibold text-slate-900">Gerenciar salas</h1>
         <Button onClick={() => setEditando({})}>Nova sala</Button>
       </div>
@@ -155,7 +155,7 @@ function FormularioSala({ sala, empresaId, onClose, onSalvo }) {
             ))}
           </div>
         </div>
-        <div className="flex justify-end gap-2 pt-2">
+        <div className="flex flex-wrap justify-end gap-2 pt-2">
           <Button type="button" variant="secondary" onClick={onClose}>
             Cancelar
           </Button>

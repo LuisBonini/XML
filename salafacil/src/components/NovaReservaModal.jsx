@@ -52,7 +52,7 @@ export default function NovaReservaModal({ sala, dataKey, horaInicioSugerida, on
 
         {erro && <div className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{erro}</div>}
 
-        <div className="flex gap-3">
+        <div className="flex flex-col gap-3 sm:flex-row">
           <Input label="Início" type="time" required value={horaInicio} onChange={(e) => setHoraInicio(e.target.value)} />
           <Input label="Fim" type="time" required value={horaFim} onChange={(e) => setHoraFim(e.target.value)} />
         </div>
@@ -64,7 +64,7 @@ export default function NovaReservaModal({ sala, dataKey, horaInicioSugerida, on
           onChange={(e) => setParticipantes(e.target.value)}
         />
 
-        <div className="flex justify-end gap-2 pt-2">
+        <div className="flex flex-wrap justify-end gap-2 pt-2">
           <Button type="button" variant="secondary" onClick={onClose}>
             Cancelar
           </Button>
