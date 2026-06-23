@@ -37,7 +37,7 @@ export default function Auth() {
     const { error } = await entrar(email, senha)
     setCarregando(false)
     if (error) return setErro(traduzErro(error.message))
-    navigate('/')
+    navigate('/app')
   }
 
   async function aoCriarEmpresa(e) {
@@ -55,7 +55,7 @@ export default function Auth() {
     setCarregando(false)
     if (error) return setErro(traduzErro(error.message))
     if (confirmacaoPendente) return setMensagem('Verifique seu e-mail para confirmar o cadastro.')
-    navigate('/')
+    navigate('/app')
   }
 
   async function aoAceitarConvite(e) {
@@ -66,7 +66,7 @@ export default function Auth() {
     setCarregando(false)
     if (error) return setErro(traduzErro(error.message))
     if (confirmacaoPendente) return setMensagem('Verifique seu e-mail para confirmar o cadastro.')
-    navigate('/')
+    navigate('/app')
   }
 
   return (

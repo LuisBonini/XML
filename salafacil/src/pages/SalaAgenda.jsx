@@ -45,7 +45,7 @@ export default function SalaAgenda() {
   async function carregarSala() {
     const { data: salaData, error } = await supabase.from('salas').select('*').eq('id', id).single()
     if (error) {
-      navigate('/')
+      navigate('/app')
       return
     }
     setSala(salaData)
@@ -74,7 +74,7 @@ export default function SalaAgenda() {
 
   return (
     <div>
-      <button onClick={() => navigate('/')} className="mb-4 text-sm text-slate-500 hover:text-slate-800">
+      <button onClick={() => navigate('/app')} className="mb-4 text-sm text-slate-500 hover:text-slate-800">
         ← Voltar para salas
       </button>
 

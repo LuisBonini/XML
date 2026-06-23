@@ -15,7 +15,7 @@ export function RotaAdmin() {
   const { usuario, carregando } = useAuth()
 
   if (carregando) return <TelaCarregando />
-  if (usuario?.role !== 'admin') return <Navigate to="/" replace />
+  if (usuario?.role !== 'admin') return <Navigate to="/app" replace />
 
   return <Outlet />
 }

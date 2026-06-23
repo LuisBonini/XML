@@ -42,7 +42,7 @@ export default function Dashboard() {
             key={sala.id}
             className="cursor-pointer transition hover:border-brand-300 hover:shadow-md"
           >
-            <button className="block w-full text-left" onClick={() => navigate(`/salas/${sala.id}`)}>
+            <button className="block w-full text-left" onClick={() => navigate(`/app/salas/${sala.id}`)}>
               <div className="flex items-start justify-between">
                 <h2 className="font-medium text-slate-900">{sala.nome}</h2>
                 {sala.andar && <Badge>{sala.andar}</Badge>}
