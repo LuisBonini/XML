@@ -7,8 +7,21 @@ frontend, Supabase (Auth + Postgres + RLS) no backend.
 
 - **Frontend**: React, Vite, Tailwind CSS, React Router
 - **Backend**: Supabase (Auth, Postgres, Row Level Security)
+- **Testes**: Vitest + React Testing Library
 - **Hospedagem**: Vercel (frontend) + Supabase (backend)
 - **Pagamentos**: Stripe (não integrado ainda — ver seção abaixo)
+
+## Funcionalidades
+
+- Landing page pública (`/`) com apresentação do produto e planos
+- Cadastro de empresa + conta admin, login, e cadastro via convite (`/entrar`)
+- Dashboard com lista de salas (`/app`)
+- Agenda visual por sala com grade de horários e criação de reserva (`/app/salas/:id`)
+- Verificação de conflito de horário em duas camadas (client + constraint no banco)
+- "Meus agendamentos" com cancelamento de reserva própria (`/app/meus-agendamentos`)
+- Painel admin: CRUD de salas, gestão de usuários e convites, configurações de
+  marca da empresa — nome, cor primária e logo (`/app/admin/*`)
+- Layout responsivo, testado em telas de tablet e celular
 
 ## Setup do Supabase
 
@@ -55,14 +68,23 @@ A checagem acontece em duas camadas:
    horário na mesma sala, mesmo sob concorrência (duas pessoas reservando ao
    mesmo tempo). Esse é o ponto de verdade contra race conditions.
 
+## Testes
+
+```bash
+npm run test       # roda a suíte uma vez
+npm run test:watch # modo watch
+```
+
+A suíte cobre a lógica de conflito de horário (`src/utils/reservas.js`), o
+modal de nova reserva, a agenda da sala e o fluxo de login/cadastro do `Auth.jsx`.
+
 ## Próximos passos (fora do MVP)
 
 - **Stripe**: a tabela `empresas` já tem as colunas `plano` e
   `stripe_customer_id`. Para integrar, crie uma Edge Function de checkout/webhook
-  e atualize `plano`/`stripe_customer_id` ao confirmar o pagamento.
-- **Branding por empresa (Pro)**: `empresas.cor_primaria` e `empresas.logo_url`
-  já existem no schema; o `Layout.jsx` já lê `cor_primaria` para colorir o
-  cabeçalho — falta a tela de configurações para o admin editar isso.
+  e atualize `plano`/`stripe_customer_id` ao confirmar o pagamento. A tela
+  **Configurações** já mostra o plano atual e está pronta para receber o botão
+  de upgrade quando o checkout existir.
 - **Convites por e-mail real**: ver seção acima.
 
 ## Deploy
